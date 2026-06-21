@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>赏金女王 · 知识入口说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f3f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #2c3e50;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* header / hero 精简 */
+    .hero-mini {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #e2e6ea;
+    }
+
+    .hero-mini h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #1e2a3a;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-mini .subhead {
+      font-size: 1rem;
+      color: #5e6f7e;
+      border-left: 3px solid #9aa9b9;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* 卡片网格 */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      border: 1px solid #eaeef2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1f2a36;
+      margin-bottom: 0.9rem;
+      border-bottom: 1px solid #edf0f3;
+      padding-bottom: 0.6rem;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #3b4a59;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      color: #7d8b9b;
+      font-weight: bold;
+    }
+
+    .card .highlight-link {
+      color: #1e6a9e;
+      text-decoration: none;
+      border-bottom: 1px dashed #b8c9d9;
+    }
+
+    .card .highlight-link:hover {
+      color: #0a4a70;
+      border-bottom-style: solid;
+    }
+
+    /* 提示区 + FAQ 合并卡片 */
+    .info-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem 1.75rem;
+      border: 1px solid #e2e6ea;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1f2a36;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    .info-card p, .info-card .faq-item {
+      font-size: 0.92rem;
+      color: #3b4a59;
+      margin-bottom: 0.6rem;
+    }
+
+    .info-card .faq-item strong {
+      display: block;
+      color: #1e2a3a;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    .info-card .faq-item + .faq-item {
+      border-top: 1px solid #f0f2f5;
+      padding-top: 0.7rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef2f7;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.75rem;
+      border-radius: 30px;
+      color: #3b4f62;
+      margin-right: 0.4rem;
+      border: 1px solid #dce2e9;
+    }
+
+    /* 尾部 */
+    .footer-note {
+      text-align: center;
+      padding: 2rem 1rem 0.5rem;
+      font-size: 0.85rem;
+      color: #7c8b9c;
+      border-top: 1px solid #e0e5ea;
+      margin-top: 1rem;
+    }
+
+    .footer-note a {
+      color: #3d6a8f;
+      text-decoration: none;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero-mini {
+        padding: 1.5rem 1.2rem;
+      }
+      .hero-mini h1 {
+        font-size: 1.7rem;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .info-row {
+        grid-template-columns: 1fr;
+      }
+      .card, .info-card {
+        padding: 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- 极简 hero 说明 -->
+    <div class="hero-mini">
+      <h1>赏金女王 · 知识库入口</h1>
+      <div class="subhead">
+        稳定索引 · 结构说明 · 辅助提示
+      </div>
+      <p style="margin-top: 1rem; color: #3d5060;">
+        这是一个围绕 <a href="https://cns-queenbounty.com" class="highlight-link" style="border-bottom: 1px solid #b0c4d4;">赏金女王</a> 整理的信息页，提供背景、特点、常见问题摘要与指引。页面内容保持克制、真实，不夸大，仅供浏览参考。
+      </p>
+    </div>
+
+    <!-- 卡片区：目录感布局 -->
+    <div class="cards-grid">
+      <div class="card">
+        <h2>📌 平台背景</h2>
+        <p>
+          “赏金女王” 是一个以任务悬赏与互动内容为特色的网络平台。用户可以在其中浏览不同类别的情境、参与话题或完成指定挑战。平台整体偏向娱乐化与社区化，不涉及金融、博彩或违规内容。
+        </p>
+        <p style="margin-top: 0.8rem;">
+          更多完整介绍请直接参考 <a href="https://cns-queenbounty.com" class="highlight-link">赏金女王</a> 主站说明。
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>🧩 特点摘要</h2>
+        <ul>
+          <li>内容分类清晰：每日更新不同主题的悬赏任务</li>
+          <li>社区互动氛围：用户可提交反馈、参与评价</li>
+          <li>轻量界面：无过度诱导性设计，操作路径明确</li>
+          <li>持续维护：平台功能与规则保持适度更新</li>
+          <li>非金融属性：仅限娱乐与信息分享，不含资金盘或投机</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>📂 适用场景</h2>
+        <ul>
+          <li>对悬赏式内容感兴趣的浏览者</li>
+          <li>希望了解社区任务玩法的普通用户</li>
+          <li>内容创作者寻找选题灵感或互动参考</li>
+          <li>需要查阅平台基础规则与说明的访客</li>
+        </ul>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #5b6d7c;">
+          <span class="badge">非商业</span><span class="badge">信息索引</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- 提示区 + FAQ 摘要 (两列布局) -->
+    <div class="info-row">
+      <div class="info-card">
+        <h3>📎 使用提示</h3>
+        <p>• 初次访问时建议先浏览主站“关于”页面，了解基本规则。<br>
+           • 所有任务与内容均以娱乐为导向，请勿投入超出合理范围的精力。<br>
+           • 如遇到界面异常或描述冲突，以 <a href="https://cns-queenbounty.com" class="highlight-link">赏金女王</a> 实际显示为准。<br>
+           • 平台不收集敏感个人信息，请放心使用常规浏览功能。
+        </p>
+        <p style="margin-top: 0.6rem; font-style: italic; color: #607586;">
+          保持理性参与，享受轻松氛围。
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>❓ FAQ 摘要</h3>
+        <div class="faq-item">
+          <strong>Q：赏金女王需要注册吗？</strong>
+          <p>部分浏览功能无需注册，但参与任务或提交内容通常需要创建账号。具体门槛请见主站说明。</p>
+        </div>
+        <div class="faq-item">
+          <strong>Q：内容是否适合所有年龄段？</strong>
+          <p>平台内容以青年及以上用户为主要对象，部分话题可能带有虚构或情境色彩，建议用户自行判断。</p>
+        </div>
+        <div class="faq-item">
+          <strong>Q：如何获得更多帮助？</strong>
+          <p>可以前往 <a href="https://cns-queenbounty.com" class="highlight-link">赏金女王</a> 站内帮助页面，或留意页脚联系方式（如有）。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div style="background: #ffffff; border-radius: 16px; padding: 1.5rem 1.75rem; border: 1px solid #e2e6ea; box-shadow: 0 3px 10px rgba(0,0,0,0.02); margin-top: 0.5rem;">
+      <h3 style="font-size: 1rem; font-weight: 600; color: #1f2a36; margin-bottom: 0.7rem;">📋 相关信息</h3>
+      <p style="font-size: 0.92rem; color: #3b4a59;">
+        · 本页面仅为指南式入口，不存储任何用户数据，也不代表平台官方立场。<br>
+        · 建议将 <a href="https://cns-queenbounty.com" class="highlight-link">赏金女王</a> 加入书签以便稳定访问。<br>
+        · 内容更新时间：不定期根据主站变化进行同步修正。<br>
+        · 如发现链接失效或信息过时，请直接访问主站获取最新版本。
+      </p>
+    </div>
+
+    <div class="footer-note">
+      <p>信息收集页 · 非官方 · 仅供知识参考  —  <a href="https://cns-queenbounty.com">赏金女王</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
